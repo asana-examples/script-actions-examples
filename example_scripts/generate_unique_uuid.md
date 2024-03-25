@@ -39,9 +39,21 @@ Create a custom script rule that generates a unique UUID for your tasks when it 
 
 ### Setup Rule Trigger:
 
-![udpate goal metric rule builder](../images/scripts/generate_uuid_rule_builder.png)
+1. Inside of your **"Generate UUID Project"** project navigate to **"Customize" -> "Rules" -> "+ Add rule" -> "Create custom rule"**
+   <details>
+   <summary>more details</summary>
+   
+   ![add a rule](../images/scripts/generate_uuid_add_rule.png)
+   ![create custom rule](../images/scripts/create_custom_rule_page.png)
+   </details>
+2. Configure the following:
+   - **"+ When..."** -> **"Task is added to this project"**
+   - **"Check if…"** -> Remove this card
+   - **"Do this…"** -> **"External actions"** -> **"Run custom script"** -> Edit and copy over the script in the [Script](#script) section below
+  ![udpate goal metric rule builder](../images/scripts/generate_uuid_rule_builder.png)
 
-### Script Pre-requisites:
+### Script
+#### Pre-requisites:
 
 Note down the following details for the below script:
 1. `<YOUR_FISCAL_YEAR_CUSTOM_FIELD_GID>`: Replace `<PORTFOLIO_GID>` in the following link `https://app.asana.com/api/1.0/portfolios/<PORTFOLIO_GID>/custom_field_settings` and open that link up in the same browser as your logged in user. Find and use the `gid` of the **"Fiscal Year"** custom field.
@@ -53,8 +65,6 @@ Note down the following details for the below script:
 2. `<NAME_OF_YOUR_CLIENT_CODE_CUSTOM_FIELD>`: Use the name you set when you were creating your **"Client Code"** custom field. In this case we named it **"Client Code"**.
 
    **NOTE:** this is case sensitive but you can modify the script to make this case-insensitive as needed.
-
-### Script:
 
 We advise you to copy and paste this script into your code editor for editing. Once you're satisfied with your changes, simply copy the script into the custom field rule editor.
 
