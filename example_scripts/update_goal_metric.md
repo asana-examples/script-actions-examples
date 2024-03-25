@@ -11,7 +11,10 @@ A Solutions team keeps track of the amount of ARR that they've influenced on a g
 Create a custom script rule that automatically updates the goal metric whenever a person on the team completes a request. A request is completed when the task associated with the request is moved to the **"Closed - Success"** section of the project.
 
 ### Scenario Setup:
-1. Create a goal called **"Influence $1M in ARR"**
+1. Create a goal called **"Influence $1M in ARR"** with the following configurations
+   - **"Update method"** = **"Manual"**,
+   - **"Measurement"** = **"$USD"**
+   - **"Target Value"** = **"$1,000,000"**
    <details>
    <summary>more details</summary>
 
@@ -49,9 +52,22 @@ Create a custom script rule that automatically updates the goal metric whenever 
 
 ### Setup Rule Trigger:
 
-![udpate goal metric rule builder](../images/scripts/update_goal_metric_rule_builder.png)
+1. Inside of your **"Team Inbox"** project navigate to **"Customize" -> "Rules" -> "+ Add rule" -> "Create custom rule"**
+   <details>
+   <summary>more details</summary>
+   
+   ![add a rule](../images/scripts/update_goal_metric_add_rule.png)
+   ![create custom rule](../images/scripts/create_custom_rule_page.png)
+   </details>
+2. Configure the following:
+   - **"+ When..."** -> **"Task is moved to a section"**
+   - **"Check if…"** -> **"Section is..."** -> select **"Closed - Success"**
+   - **"Do this…"** -> **"External actions"** -> **"Run custom script"** -> Edit and copy over the script in the [Script](#script) section below
+  ![udpate goal metric rule builder](../images/scripts/update_goal_metric_rule_builder.png)
+3. Click on the **"Publish rule"** button
 
-### Script Pre-requisites:
+### Script
+#### Pre-requisites:
 
 Note down the following details for the below script:
 1. `<YOUR_GOAL_GID>` -> You can get the goal `gid` from the URL of your goal
@@ -60,28 +76,18 @@ Note down the following details for the below script:
 
    ![get the goal gid](../images/scripts/goal_gid.png)
    </details>
-2. `<YOUR_CUSTOM_FIELD_GID>`:
-
-   **OPTION 1:** Replace `<YOUR_PROJECT_GID>` in the following link `https://app.asana.com/api/1.0/projects/<YOUR_PROJECT_GID>/custom_field_settings` and open that link up in the same browser as your logged in user. Use the `gid` of the **"Total Amount"** custom field.
-
-   **OPTION 2:** Make a call to the [Get a project's custom fields](https://developers.asana.com/reference/getcustomfieldsettingsforproject) endpoint to get the `gid` of the **"Total Amount"** custom field.
-   <details>
+2. `<YOUR_CUSTOM_FIELD_GID>`: Replace `<YOUR_PROJECT_GID>` in the following link `https://app.asana.com/api/1.0/projects/<YOUR_PROJECT_GID>/custom_field_settings` and open that link up in the same browser as your logged in user. Use the `gid` of the **"Total Amount"** custom field.
+    <details>
    <summary>more details</summary>
 
    ![get gid of total amount custom field](../images/scripts/get_gid_for_total_amount_custom_field.png)
    </details>
-3. `<YOUR_SECTION_GID>`:
-   
-   **OPTION 1:** Replace `<YOUR_PROJECT_GID>` in the following link `https://app.asana.com/api/1.0/projects/<YOUR_PROJECT_GID>/sections` and open that link up in the same browser as your logged in user. Use the `gid` of the **"Closed - Success"** section.
-
-   **OPTION 2:** Make a call to the [Get sections in a project](https://developers.asana.com/reference/getsectionsforproject) endpoint to get the `gid` of the **"Closed - Success"** section.
+3. `<YOUR_SECTION_GID>`: Replace `<YOUR_PROJECT_GID>` in the following link `https://app.asana.com/api/1.0/projects/<YOUR_PROJECT_GID>/sections` and open that link up in the same browser as your logged in user. Use the `gid` of the **"Closed - Success"** section.
    <details>
    <summary>more details</summary>
 
-   ![get gid of closed success section](../images/scripts/get_gid_for_closed_success_section.png)
+   ![get gid of closed - success section](../images/scripts/get_gid_for_closed_success_section.png)
    </details>
-
-### Script:
 
 We advise you to copy and paste this script into your code editor for editing. Once you're satisfied with your changes, simply copy the script into the custom field rule editor.
 
