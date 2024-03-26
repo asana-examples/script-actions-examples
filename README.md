@@ -228,7 +228,8 @@ const run = async () => {
         const randomNum = Math.random();
         
         // Get information about the triggered task
-        const task = await tasksApiInstance.getTask(task_gid, {});
+        // NOTE: task_gid is provided as a number so we want to convert it to a string
+        const task = await tasksApiInstance.getTask(task_gid.toString(), {});
         
         // Update the task name. Append random number to name of the triggered task
         await tasksApiInstance.updateTask(
