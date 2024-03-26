@@ -156,7 +156,7 @@ async function generateId(taskGid) {
         }
         await tasksApiInstance.updateTask(taskBody, taskGid);
     } catch (error) {
-        log(error);
+        log(JSON.stringify(error));
     }
 }
 

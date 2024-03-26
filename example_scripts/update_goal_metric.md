@@ -185,7 +185,7 @@ const run = async () => {
         // Update the goal metric with the sum of custom field values
         await updateGoalMetric(GOAL_GID, totalCustomFieldValue);
     } catch (error) {
-        log(error);
+        log(JSON.stringify(error));
     }
 };
 
