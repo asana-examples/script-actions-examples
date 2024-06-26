@@ -127,6 +127,8 @@ let client = Asana.ApiClient.instance;
 let token = client.authentications['token'];
 token.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"; // TODO: Replace this with your Personal Access Token (PAT)
 
+const log = console.log;
+
 // Set your project, task and workspace gid here
 // These will be provided to you when the custom script gets executed.
 // We want to emulate that so we set those values here
@@ -145,7 +147,6 @@ let tasksApiInstance = new Asana.TasksApi();
 /*
 ----------------------------------------------------------------------------------------
 Write your custom script below COPY and PASTE your script into the custom script rule.
-IMPORTANT: Remember to change all of your "console.log" into "log"
 ----------------------------------------------------------------------------------------
 */
 
@@ -163,7 +164,7 @@ const run = async () => {
    try {
       // TODO: YOUR SCRIPT HERE
    } catch (error) {
-      console.log(JSON.stringify(error)); // TODO: Change this to "log" before or after copy paste to custom script rule
+      log(JSON.stringify(error));
    }
 };
 
@@ -190,6 +191,8 @@ let client = Asana.ApiClient.instance;
 let token = client.authentications['token'];
 token.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"; // TODO: Replace this with your Personal Access Token (PAT)
 
+const log = console.log;
+
 // Set your project, task and workspace gid here
 // These will be provided to you when the custom script gets executed.
 // We want to emulate that so we set those values here
@@ -208,7 +211,6 @@ let tasksApiInstance = new Asana.TasksApi();
 /*
 ----------------------------------------------------------------------------------------
 Write your custom script below COPY and PASTE your script into the custom script rule.
-IMPORTANT: Remember to change all of your "console.log" into "log"
 ----------------------------------------------------------------------------------------
 */
 
@@ -241,7 +243,7 @@ const run = async () => {
             task_gid
         );
     } catch (error) {
-        console.log(JSON.stringify(error)); // TODO: Change this to "log" before or after copy paste to custom script rule
+        log(JSON.stringify(error));
     }
 };
 
