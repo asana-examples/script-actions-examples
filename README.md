@@ -134,9 +134,9 @@ const log = console.log;
 // We want to emulate that so we set those values here
 //
 // TODO: Set these values
-const project_gid = 123;
-const task_gid = 456;
-const workspace_gid = 789;
+const project_gid = "123";
+const task_gid = "456";
+const workspace_gid = "789";
 
 // Set up the resource instances that you plan on using for your script here
 // The custom script will make these available for you so you don't need to worry about
@@ -198,9 +198,9 @@ const log = console.log;
 // We want to emulate that so we set those values here
 //
 // TODO: Set these values
-const project_gid = 123;
-const task_gid = 456;
-const workspace_gid = 789;
+const project_gid = "123";
+const task_gid = "456";
+const workspace_gid = "789";
 
 // Set up the resource instances that you plan on using for your script here
 // The custom script will make these available for you so you don't need to worry about
@@ -287,7 +287,7 @@ const run = async () => {
 
         // Get information about the triggered task
         // The error here is that we provided a gid that does not exist in our domain
-        const task = await tasksApiInstance.getTask(123, {});
+        const task = await tasksApiInstance.getTask("123", {});
     } catch (error) {
         log(JSON.stringify(error));
     }
@@ -313,5 +313,6 @@ Example error shown in logs:
 
 ## Example Scripts
 
+- [Automatically assign new task to user with the least number of assigned tasks in the project](example_scripts/auto_assign_task_based_on_workload.md)
 - [Automatically update a goal metric when a deal is closed](example_scripts/update_goal_metric.md)
 - [Generate a unique UUID when task is added to a project](example_scripts/generate_unique_uuid.md)

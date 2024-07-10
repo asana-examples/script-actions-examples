@@ -50,7 +50,7 @@ Create a custom script rule that generates a unique UUID for your tasks when it 
    - **"+ When..."** -> **"Task is added to this project"**
    - **"Check if…"** -> Remove this card
    - **"Do this…"** -> **"External actions"** -> **"Run custom script"** -> Edit and copy over the script in the [Script](#script) section below
-  ![udpate goal metric rule builder](../images/scripts/generate_uuid_rule_builder.png)
+  ![task added to project rule](../images/scripts/task_added_to_project_rule.png)
 
 ### Script
 #### Pre-requisites:

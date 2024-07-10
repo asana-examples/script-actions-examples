@@ -70,7 +70,7 @@ Create a custom script rule that automatically updates the goal metric whenever 
 #### Pre-requisites:
 
 Note down the following details for the below script:
-1. `<YOUR_GOAL_GID>` -> You can get the goal `gid` from the URL of your goal
+1. `<YOUR_GOAL_GID>`: You can get the goal `gid` from the URL of your goal
    <details>
    <summary>more details</summary>
 
@@ -89,7 +89,7 @@ Note down the following details for the below script:
    ![get gid of closed - success section](../images/scripts/get_gid_for_closed_success_section.png)
    </details>
 
-We advise you to copy and paste this script into your code editor for editing. Once you're satisfied with your changes, simply copy the script into the custom field rule editor.
+We advise you to copy and paste this script into your code editor for editing. Once you're satisfied with your changes, simply copy the script into the rule editor.
 
 ```javascript
 /**
