@@ -17,7 +17,7 @@ Create a script actions rule that automatically updates the goal metric whenever
 
    ![create influence arr goal goal](../images/scripts/create_influence_arr_goal.png)
    </details>
-2. Click on the "Progress settings" button on the goal and setup the following configurations:
+2. Click on the **"Progress settings"** button on the goal and setup the following configurations:
    - **"Progress Source"** = **"Manual"**,
    - **"Measurement"** = **"$USD"**
    - **"Target Value"** = **"$1,000,000"**
@@ -60,11 +60,11 @@ Create a script actions rule that automatically updates the goal metric whenever
 
 ### Setup Rule Trigger:
 
-1. Inside of your **"Team Inbox"** project navigate to **"Customize" -> "Rules" -> "+ Add rule" -> "Create custom rule"**
+1. Inside of your **"Team Inbox"** project navigate to **"Customize" -> "Rules" -> "Create custom rule"**
    <details>
    <summary>more details</summary>
    
-   ![add a rule](../images/scripts/update_goal_metric_add_rule.png)
+   ![add a rule](../images/scripts/add_rule.png)
    ![create custom rule](../images/scripts/create_custom_rule_page.png)
    </details>
 2. Configure the following:
