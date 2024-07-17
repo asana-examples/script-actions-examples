@@ -1,96 +1,32 @@
 # custom-scripts-examples
 
-## Installation:
+## Installation
 ![custom scripts installation](images/installation/custom_scripts_installation.gif)
-1. Inside of a project, navigate to > **"Customize"** > **"Rules"** > **"+ Add rule"** > **"Create custom rule"**
-   <details>
-   <summary>more details</summary>
+1. Inside of a project, navigate to > **"Customize"** > **"Rules"** > **"Create custom rule"**
+2. Navigate to **"Do this..."** > **"External actions"** > **"Run script"** > **"Connect to Scripts by Asana"**
+3. A new tab will open, displaying the Grant Permission page for the app. Click on **"Allow"**
+4. You should now be authenticated and are now ready to start creating automation rules with Script Actions
 
-   ![add a rule](images/installation/1.png)
-   ![create a custom rule](images/installation/1(2).png)
-   </details>
-2. Navigate to **"Do this..."** > **"External actions"** > **"Run custom script"**
-   <details>
-   <summary>more details</summary>
-
-   ![run custom script action](images/installation/2.png)
-   </details>
-3. Click on the **"Please authenticate to proceed."** button. This will open a new tab to the **"Grant Permission"** page
-   <details>
-   <summary>more details</summary>
-   
-   ![please authenticate to proceed](images/installation/3.png)
-   </details>
-4. Click on **"Allow"** and close the tab
-   <details>
-   <summary>more details</summary>
-   
-   ![grant permission allow button](images/installation/4.png)
-   ![close tab](images/installation/4(2).png)
-   </details>
-5. You should now be authenticated and be presented with the custom scripts action
-   <details>
-   <summary>more details</summary>
-   
-   ![run custom script action page](images/installation/5.png)
-   </details>
-
-## Usage:
+## Usage: Default Script
 ![use custom scripts](images/installation/use_custom_scripts.gif)
-1. Inside of a project navigate to > **"Customize"** > **"Rules"** > **"+ Add rule"** > **"Create custom rule"**
-   <details>
-   <summary>more details</summary>
-   
-   ![add a rule](images/installation/1.png)
-   ![create a custom rule](images/installation/1(2).png)
-   </details>
+1. Inside of a project navigate to > **"Customize"** > **"Rules"** > **"Create custom rule"**
 2. Select a trigger (e.g., **"Task is added to a project"**):
-   <details>
-   <summary>more details</summary>
-   
-   ![add a rule](images/usage/2.png)
-   </details>
 3. Configure a condition for the **"+ Check if..."** step or delete that step
-   <details>
-   <summary>more details</summary>
-   
-   ![configure or delete condition](images/usage/3.png)
-   </details>
-4. Navigate to  **"Do this..."** > **"External actions"** > **"Run custom script"** you should be presented with the custom scripts action.
+4. Navigate to  **"Do this..."** > **"External actions"** > **"Run script"** you should be presented with the script editor.
    This is where you will want to write/provide your script.
-   <details>
-   <summary>more details</summary>
    
-   ![run custom script action](images/usage/4.png)
-   ![sample script](images/usage/4(2).png)
-   ![uncommented sample script](images/usage/4(3).png)
-   </details>
+   Script Actions utilizes the [node-asana](https://github.com/Asana/node-asana) ([v3.X.X](https://www.npmjs.com/package/asana)) client library to make API calls to Asana.
    
-   The custom scripts action utilizes the [node-asana](https://github.com/Asana/node-asana) ([v3.X.X](https://www.npmjs.com/package/asana)) client library to make API calls to Asana.
-   
-   In each custom script, we provide you with the following information shown at the top of the script in a multi-lined comment:
-   ```javascript
-   /**
-    * What's in scope?
-    * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
-    * 2. (function) log - this behaves like console.log and takes any number of parameters
-    * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
-    *    tasksApiInstance.getTask(...)
-    *    goalsApiInstance.addFollowers(...)
-    * For more info, see https://github.com/Asana/node-asana
-    */
-   ```
+   In each custom script, we provide you with the following variables:
+   - `project_gid`: The project's gid
+   - `task_gid`: The gid of the task that the rule triggered on
+   - `workspace_gid`: The workspace gid
 
-   You can utilize this information to write a custom script using the [node-asana](https://github.com/Asana/node-asana) ([v3.X.X](https://www.npmjs.com/package/asana)) client library.
+   You can utilize this information to write a Script Action scripts using the [node-asana](https://github.com/Asana/node-asana) ([v3.X.X](https://www.npmjs.com/package/asana)) client library.
    
-   For this example usage, we will just uncomment the provided sample script. The sample script fetches the information about the triggered task and updates the task name.
+   For this example, we will just uncomment the provided sample script. The sample script fetches the information about the triggered task and updates the task name.
 5. Click on the **"Publish rule"** button
-   <details>
-   <summary>more details</summary>
-   
-   ![publish rule](images/usage/5.png)
-   </details>
-6. Trigger your rule. EX: In this scenario we configured our rule to trigger when a task is added to our project. The action the rule will take is updating the name of the new task.
+6. Trigger your rule. In this scenario, we configured our rule to trigger when a task is added to our project. 
    <details>
    <summary>more details</summary>
    
@@ -125,7 +61,9 @@ const Asana = require('asana');
 
 let client = Asana.ApiClient.instance;
 let token = client.authentications['token'];
-token.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"; // TODO: Replace this with your Personal Access Token (PAT)
+// TODO: Replace <YOUR_PERSONAL_ACCESS_TOKEN> with your Personal Access Token (PAT)
+// NOTE: This is only used for testing your script locally
+token.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 const log = console.log;
 
@@ -138,15 +76,9 @@ const project_gid = "123";
 const task_gid = "456";
 const workspace_gid = "789";
 
-// Set up the resource instances that you plan on using for your script here
-// The custom script will make these available for you so you don't need to worry about
-//
-// TODO: instantiate the resources that you plan on using in your script
-let tasksApiInstance = new Asana.TasksApi();
-
 /*
 ----------------------------------------------------------------------------------------
-Write your custom script below COPY and PASTE your script into the custom script rule.
+Write your script below, then COPY and PASTE your script into the script editor
 ----------------------------------------------------------------------------------------
 */
 
@@ -154,18 +86,17 @@ Write your custom script below COPY and PASTE your script into the custom script
  * What's in scope?
  * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
  * 2. (function) log - this behaves like console.log and takes any number of parameters
- * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
- *    tasksApiInstance.getTask(...)
- *    goalsApiInstance.addFollowers(...)
+ * 3. (object) Asana - the Asana node client
  * For more info, see https://github.com/Asana/node-asana
  */
 
+// Instantiate Asana API resources
+// TODO: instantiate the Asana resources that you plan on using in your script
+// EX: If you want to make API calls to the tasks endpoint, uncomment the line below
+// let tasksApiInstance = new Asana.TasksApi();
+
 const run = async () => {
-   try {
-      // TODO: YOUR SCRIPT HERE
-   } catch (error) {
-      log(JSON.stringify(error));
-   }
+    // TODO: YOUR SCRIPT HERE
 };
 
 run();
@@ -189,7 +120,9 @@ const Asana = require('asana');
 
 let client = Asana.ApiClient.instance;
 let token = client.authentications['token'];
-token.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"; // TODO: Replace this with your Personal Access Token (PAT)
+// TODO: Replace <YOUR_PERSONAL_ACCESS_TOKEN> with your Personal Access Token (PAT)
+// NOTE: This is only used for testing your script locally
+token.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 const log = console.log;
 
@@ -202,12 +135,6 @@ const project_gid = "123";
 const task_gid = "456";
 const workspace_gid = "789";
 
-// Set up the resource instances that you plan on using for your script here
-// The custom script will make these available for you so you don't need to worry about
-//
-// TODO: instantiate the resources that you plan on using in your script
-let tasksApiInstance = new Asana.TasksApi();
-
 /*
 ----------------------------------------------------------------------------------------
 Write your custom script below COPY and PASTE your script into the custom script rule.
@@ -218,11 +145,12 @@ Write your custom script below COPY and PASTE your script into the custom script
  * What's in scope?
  * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
  * 2. (function) log - this behaves like console.log and takes any number of parameters
- * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
- *    tasksApiInstance.getTask(...)
- *    goalsApiInstance.addFollowers(...)
+ * 3. (object) Asana - the Asana node client
  * For more info, see https://github.com/Asana/node-asana
  */
+
+// Instantiate Asana API resources
+let tasksApiInstance = new Asana.TasksApi();
 
 const run = async () => {
     try {
@@ -274,11 +202,12 @@ Example custom script with error:
  * What's in scope?
  * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
  * 2. (function) log - this behaves like console.log and takes any number of parameters
- * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
- *    tasksApiInstance.getTask(...)
- *    goalsApiInstance.addFollowers(...)
+ * 3. (object) Asana - the Asana node client
  * For more info, see https://github.com/Asana/node-asana
  */
+
+// Instantiate Asana API resources
+let tasksApiInstance = new Asana.TasksApi();
 
 const run = async () => {
     try {

@@ -7,7 +7,7 @@ You want to generate a unique UUID for each new task you add to your project. Cu
 
 ### Solution:
 
-Create a custom script rule that generates a unique UUID for your tasks when it gets added to your project.
+Create a script actions rule that generates a unique UUID for your tasks when it gets added to your project.
 
 ### Scenario Setup:
 1. Create a portfolio called **"Generate UUID Portfolio"**
