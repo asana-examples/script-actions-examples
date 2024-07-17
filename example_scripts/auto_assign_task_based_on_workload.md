@@ -37,7 +37,7 @@ If a new task is added `TASK_4` it should be assigned to `USER_B` since `USER_A`
    <details>
    <summary>more details</summary>
    
-   ![add a rule](../images/scripts/auto_assign_tasks_add_rule.png)
+   ![add a rule](../images/scripts/add_rule.png)
    ![create custom rule](../images/scripts/create_custom_rule_page.png)
    </details>
 2. Configure the following:

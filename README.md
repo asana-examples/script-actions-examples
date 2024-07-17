@@ -315,4 +315,4 @@ Example error shown in logs:
 
 - [Automatically assign new task to user with the least number of assigned tasks in the project](example_scripts/auto_assign_task_based_on_workload.md)
 - [Automatically update a goal metric when a deal is closed](example_scripts/update_goal_metric.md)
-- [Generate a unique UUID when task is added to a project](example_scripts/generate_unique_uuid.md)
+- [Generate a unique UUID when a task is added to a project](example_scripts/generate_unique_uuid.md)

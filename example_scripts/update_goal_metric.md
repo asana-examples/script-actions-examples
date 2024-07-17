@@ -2,37 +2,45 @@
 
 ### Problem:
 
-A Solutions team keeps track of the amount of ARR that they've influenced on a goal metric. A member on the team has to manually update this goal metric each time they finish a request to match the value in their project dashboard.
+A Solutions team keeps track of the amount of ARR that they've influenced on a goal metric. A member on the team has to manually update this goal metric each time they finish a request to match the value in their project.
 
 ![udpate goal metric rule builder](../images/scripts/update_goal_metric_manual.png)
 
 ### Solution:
 
-Create a custom script rule that automatically updates the goal metric whenever a person on the team completes a request. A request is completed when the task associated with the request is moved to the **"Closed - Success"** section of the project.
+Create a script actions rule that automatically updates the goal metric whenever a person on the team completes a request. A request is completed when the task associated with the request is moved to the **"Closed - Success"** section of the project.
 
 ### Scenario Setup:
-1. Create a goal called **"Influence $1M in ARR"** with the following configurations
-   - **"Update method"** = **"Manual"**,
-   - **"Measurement"** = **"$USD"**
-   - **"Target Value"** = **"$1,000,000"**
+1. Create a goal called **"Influence $1M in ARR"**
    <details>
    <summary>more details</summary>
 
    ![create influence arr goal goal](../images/scripts/create_influence_arr_goal.png)
    </details>
-2. Create a project called **"Team Inbox"**
+2. Click on the "Progress settings" button on the goal and setup the following configurations:
+   - **"Progress Source"** = **"Manual"**,
+   - **"Measurement"** = **"$USD"**
+   - **"Target Value"** = **"$1,000,000"**
+    <details>
+    <summary>more details</summary>
+
+   ![goal progress settings button](../images/scripts/goal_progress_settings_button.png)
+   ![goal progress settings](../images/scripts/goal_progress_settings.png)
+   </details>
+3. Create a project called **"Team Inbox"**
    <details>
    <summary>more details</summary>
 
    ![create team inbox project](../images/scripts/create_team_inbox_project.png)
    </details>
-3. Inside of the **"Team Inbox"** project, create a number custom field with `$USD` format and call it **"Total Amount"**
+4. Inside of the **"Team Inbox"** project, create a number custom field with `$USD` format and call it **"Total Amount"**
    <details>
    <summary>more details</summary>
 
-   ![create total amount custom field](../images/scripts/create_total_amount_custom_field.png)
+   ![create total amount custom field menu](../images/scripts/create_total_amount_custom_field_1.png)
+   ![create total amount custom field configuration](../images/scripts/create_total_amount_custom_field_2.png)
    </details>
-4. Create the following sections for your project:
+5. Create the following sections for your project:
    - New Requests
    - In Review
    - In Progress
@@ -43,7 +51,7 @@ Create a custom script rule that automatically updates the goal metric whenever 
 
     ![create sections for project](../images/scripts/create_sections_for_team_inbox.png)
     </details>
-5. Populate each section with at least one task and set a $ value for the **"Total Amount"** custom field on those tasks
+6. Populate each section with at least one task and set a $ value for the **"Total Amount"** custom field on those tasks
     <details>
     <summary>more details</summary>
 
@@ -62,7 +70,7 @@ Create a custom script rule that automatically updates the goal metric whenever 
 2. Configure the following:
    - **"+ When..."** -> **"Task is moved to a section"**
    - **"Check if…"** -> **"Section is..."** -> select **"Closed - Success"**
-   - **"Do this…"** -> **"External actions"** -> **"Run custom script"** -> Edit and copy over the script in the [Script](#script) section below
+   - **"Do this…"** -> **"External actions"** -> **"Run script"** -> Edit and copy over the script in the [Script](#script) section below
   ![udpate goal metric rule builder](../images/scripts/update_goal_metric_rule_builder.png)
 3. Click on the **"Publish rule"** button
 
@@ -92,19 +100,13 @@ Note down the following details for the below script:
 We advise you to copy and paste this script into your code editor for editing. Once you're satisfied with your changes, simply copy the script into the rule editor.
 
 ```javascript
-/**
- * What's in scope?
- * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
- * 2. (function) log - this behaves like console.log and takes any number of parameters
- * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
- *    tasksApiInstance.getTask(...)
- *    goalsApiInstance.addFollowers(...)
- * For more info, see https://github.com/Asana/node-asana
- */
-
 const GOAL_GID = "<YOUR_GOAL_GID>";
 const CUSTOM_FIELD_GID = "<YOUR_CUSTOM_FIELD_GID>";
 const SECTION_GID = "<YOUR_SECTION_GID>";
+
+// Instantiate Asana API resources
+let goalsApiInstance = new Asana.GoalsApi();
+let tasksApiInstance = new Asana.TasksApi();
 
 // Function to get all tasks in a project's section
 const getAllTasksForSection = async (sectionGid) => {

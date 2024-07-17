@@ -1,4 +1,4 @@
-# Generate a unique UUID when task is added to a project
+# Generate a unique UUID when a task is added to a project
 
 ### Problem:
 You want to generate a unique UUID for each new task you add to your project. Currently you have to do this manually each time you create a task.
@@ -11,7 +11,7 @@ Create a custom script rule that generates a unique UUID for your tasks when it 
 
 ### Scenario Setup:
 1. Create a portfolio called **"Generate UUID Portfolio"**
-2. Create a project called **"Generate UUID Project"** and add it to the **"Generate UUID Portfolio"** portfolio
+2. From your **"Generate UUID Portfolio"** portfolio, create a project called **"Generate UUID Project"**
    <details>
    <summary>more details</summary>
 
@@ -21,12 +21,12 @@ Create a custom script rule that generates a unique UUID for your tasks when it 
    </details>
 3. Inside of the **"Generate UUID Portfolio"** portfolio, create and set two project custom fields to be used with the script to generate UUIDs for the tasks:
    <details>
-   <summary>Create and set <b>"Fiscal Year"</b> custom field</summary>
+   <summary>Create and set <b>"Fiscal Year"</b> text custom field</summary>
    
    ![create and set fiscal year custom field](../images/scripts/create_and_set_fiscal_year_custom_field.png)
    </details>
    <details>
-   <summary>Create and set <b>"Client Code"</b> custom field</summary>
+   <summary>Create and set <b>"Client Code"</b> text custom field</summary>
    
    ![create and set client code custom field](../images/scripts/create_and_set_client_code_custom_field.png)
    </details>
@@ -39,11 +39,11 @@ Create a custom script rule that generates a unique UUID for your tasks when it 
 
 ### Setup Rule Trigger:
 
-1. Inside of your **"Generate UUID Project"** project navigate to **"Customize" -> "Rules" -> "+ Add rule" -> "Create custom rule"**
+1. Inside of your **"Generate UUID Project"** project navigate to **"Customize" -> "Rules" -> "Create custom rule"**
    <details>
    <summary>more details</summary>
    
-   ![add a rule](../images/scripts/generate_uuid_add_rule.png)
+   ![add a rule](../images/scripts/add_rule.png)
    ![create custom rule](../images/scripts/create_custom_rule_page.png)
    </details>
 2. Configure the following:
@@ -69,15 +69,8 @@ Note down the following details for the below script:
 We advise you to copy and paste this script into your code editor for editing. Once you're satisfied with your changes, simply copy the script into the custom field rule editor.
 
 ```javascript
-/**
- * What's in scope?
- * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
- * 2. (function) log - this behaves like console.log and takes any number of parameters
- * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
- *    tasksApiInstance.getTask(...)
- *    goalsApiInstance.addFollowers(...)
- * For more info, see https://github.com/Asana/node-asana
- */
+let projectsApiInstance = new Asana.ProjectsApi();
+let tasksApiInstance = new Asana.TasksApi();
 
 function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
