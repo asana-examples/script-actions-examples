@@ -8,7 +8,11 @@
 4. You should now be authenticated and are now ready to start creating automation rules with Script Actions
 
 ## Usage: Default Script
-![use custom scripts](images/installation/use_custom_scripts.gif)
+
+
+https://github.com/user-attachments/assets/dbe56d8e-cc01-499b-bd20-b914b6f41afb
+
+
 1. Inside of a project navigate to > **"Customize"** > **"Rules"** > **"Create custom rule"**
 2. Select a trigger (e.g., **"Task is added to a project"**):
 3. Configure a condition for the **"+ Check if..."** step or delete that step
