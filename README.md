@@ -14,7 +14,7 @@ https://github.com/user-attachments/assets/dbe56d8e-cc01-499b-bd20-b914b6f41afb
 
 
 1. Inside of a project navigate to > **"Customize"** > **"Rules"** > **"Create custom rule"**
-2. Select a trigger (e.g., **"Task is added to a project"**):
+2. Select a trigger (e.g., **"Task is assigned"**):
 3. Configure a condition for the **"+ Check if..."** step or delete that step
 4. Navigate to  **"Do this..."** > **"External actions"** > **"Run script"** you should be presented with the script editor.
    This is where you will want to write/provide your script.
@@ -28,15 +28,9 @@ https://github.com/user-attachments/assets/dbe56d8e-cc01-499b-bd20-b914b6f41afb
 
    You can utilize this information to write a Script Action scripts using the [node-asana](https://github.com/Asana/node-asana) ([v3.X.X](https://www.npmjs.com/package/asana)) client library.
    
-   For this example, we will just uncomment the provided sample script. The sample script fetches the information about the triggered task and updates the task name.
+   For this example, we will just uncomment the provided sample script. The sample script fetches the information about the triggered task and appends the text **"longer name"** to the end of the task name.
 5. Click on the **"Publish rule"** button
-6. Trigger your rule. In this scenario, we configured our rule to trigger when a task is added to our project. 
-   <details>
-   <summary>more details</summary>
-   
-   ![custom script rule triggered](images/usage/6.png)
-   ![custom script rule ran](images/usage/6(2).png)
-   </details>
+6. Trigger your rule. In this scenario, we configured our rule to trigger when a task is assigned to a user in our project.
 
 ## Developing/Testing your script locally on your computer
 
