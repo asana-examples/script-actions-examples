@@ -74,6 +74,13 @@ const project_gid = "123";
 const task_gid = "456";
 const workspace_gid = "789";
 
+// Set up the resource instances that you plan on using for your script here
+// Script actions will make these available for you in the script editor
+//
+// TODO: instantiate the Asana resources that you plan on using in your script
+// EX: If you want to make API calls to the tasks endpoint, uncomment the line below
+// let tasksApiInstance = new Asana.TasksApi();
+
 /*
 ----------------------------------------------------------------------------------------
 Write your script below, then COPY and PASTE your script into the script editor
@@ -84,14 +91,11 @@ Write your script below, then COPY and PASTE your script into the script editor
  * What's in scope?
  * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
  * 2. (function) log - this behaves like console.log and takes any number of parameters
- * 3. (object) Asana - the Asana node client
+ * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
+ *    tasksApiInstance.getTask(...)
+ *    goalsApiInstance.addFollowers(...)
  * For more info, see https://github.com/Asana/node-asana
  */
-
-// Instantiate Asana API resources
-// TODO: instantiate the Asana resources that you plan on using in your script
-// EX: If you want to make API calls to the tasks endpoint, uncomment the line below
-// let tasksApiInstance = new Asana.TasksApi();
 
 const run = async () => {
     // TODO: YOUR SCRIPT HERE
@@ -106,7 +110,7 @@ run();
 
 ```javascript
 /*
-This is template code for you to test your custom scripts locally on your computer
+This is template code for you to test your script locally on your computer
 1. Make sure you have Node.js installed on your computer
 2. Make sure you have v3.X.X version of the node-asana client library installed on your computer
 3. Create a file and copy this code over to that file (EX: test.js)
@@ -133,9 +137,13 @@ const project_gid = "123";
 const task_gid = "456";
 const workspace_gid = "789";
 
+// Set up the resource instances that you plan on using for your script here
+// Script actions will make these available for you in the script editor
+let tasksApiInstance = new Asana.TasksApi();
+
 /*
 ----------------------------------------------------------------------------------------
-Write your custom script below COPY and PASTE your script into the custom script rule.
+Write your script below, then COPY and PASTE your script into the script editor
 ----------------------------------------------------------------------------------------
 */
 
@@ -143,13 +151,11 @@ Write your custom script below COPY and PASTE your script into the custom script
  * What's in scope?
  * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
  * 2. (function) log - this behaves like console.log and takes any number of parameters
- * 3. (object) Asana - the Asana node client
+ * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
+ *    tasksApiInstance.getTask(...)
+ *    goalsApiInstance.addFollowers(...)
  * For more info, see https://github.com/Asana/node-asana
  */
-
-// Instantiate Asana API resources
-let tasksApiInstance = new Asana.TasksApi();
-
 const run = async () => {
     try {
         // Generate a random number
@@ -200,12 +206,11 @@ Example custom script with error:
  * What's in scope?
  * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
  * 2. (function) log - this behaves like console.log and takes any number of parameters
- * 3. (object) Asana - the Asana node client
+ * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
+ *    tasksApiInstance.getTask(...)
+ *    goalsApiInstance.addFollowers(...)
  * For more info, see https://github.com/Asana/node-asana
  */
-
-// Instantiate Asana API resources
-let tasksApiInstance = new Asana.TasksApi();
 
 const run = async () => {
     try {

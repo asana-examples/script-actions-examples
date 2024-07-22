@@ -104,10 +104,6 @@ const GOAL_GID = "<YOUR_GOAL_GID>";
 const CUSTOM_FIELD_GID = "<YOUR_CUSTOM_FIELD_GID>";
 const SECTION_GID = "<YOUR_SECTION_GID>";
 
-// Instantiate Asana API resources
-let goalsApiInstance = new Asana.GoalsApi();
-let tasksApiInstance = new Asana.TasksApi();
-
 // Function to get all tasks in a project's section
 const getAllTasksForSection = async (sectionGid) => {
     let opts = {

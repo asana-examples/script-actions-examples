@@ -69,9 +69,6 @@ Note down the following details for the below script:
 We advise you to copy and paste this script into your code editor for editing. Once you're satisfied with your changes, simply copy the script into the custom field rule editor.
 
 ```javascript
-let projectsApiInstance = new Asana.ProjectsApi();
-let tasksApiInstance = new Asana.TasksApi();
-
 function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);

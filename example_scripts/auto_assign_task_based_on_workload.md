@@ -63,10 +63,6 @@ We advise you to copy and paste this script into your code editor for editing. O
 ```javascript
 const TEAM_GID = "<YOUR_TEAM_GID>";
 
-// Instantiate Asana API resources
-let tasksApiInstance = new Asana.TasksApi();
-let usersApiInstance = new Asana.UsersApi();
-
 async function assignTaskToUserWithLowestIncompleteTasks() {
     try {
         // Step 1: Retrieve all incomplete tasks from the specified project
