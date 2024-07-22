@@ -49,7 +49,7 @@ Create a script actions rule that generates a unique UUID for your tasks when it
 2. Configure the following:
    - **"+ When..."** -> **"Task is added to this project"**
    - **"Check if…"** -> Remove this card
-   - **"Do this…"** -> **"External actions"** -> **"Run custom script"** -> Edit and copy over the script in the [Script](#script) section below
+   - **"Do this…"** -> **"External actions"** -> **"Run script"** -> Edit and copy over the script in the [Script](#script) section below
   ![task added to project rule](../images/scripts/task_added_to_project_rule.png)
 
 ### Script

@@ -1,7 +1,7 @@
 # custom-scripts-examples
 
 ## Installation
-![custom scripts installation](images/installation/custom_scripts_installation.gif)
+![script actions installation](images/installation/custom_scripts_installation.gif)
 1. Inside of a project, navigate to > **"Customize"** > **"Rules"** > **"Create custom rule"**
 2. Navigate to **"Do this..."** > **"External actions"** > **"Run script"** > **"Connect to Scripts by Asana"**
 3. A new tab will open, displaying the Grant Permission page for the app. Click on **"Allow"**
@@ -21,7 +21,7 @@ https://github.com/user-attachments/assets/dbe56d8e-cc01-499b-bd20-b914b6f41afb
    
    Script Actions utilizes the [node-asana](https://github.com/Asana/node-asana) ([v3.X.X](https://www.npmjs.com/package/asana)) client library to make API calls to Asana.
    
-   In each custom script, we provide you with the following variables:
+   In each script action run, we provide you with the following variables:
    - `project_gid`: The project's gid
    - `task_gid`: The gid of the task that the rule triggered on
    - `workspace_gid`: The workspace gid
@@ -47,7 +47,7 @@ The following is a way to write/test your script on your computer. You can copy 
 
 ```javascript
 /*
-This is template code for you to test your custom scripts locally on your computer
+This is template code for you to test your script actions locally on your computer
 1. Make sure you have Node.js installed on your computer
 2. Make sure you have v3.X.X version of the node-asana client library installed on your computer
 3. Create a file and copy this code over to that file (EX: test.js)
@@ -66,7 +66,7 @@ token.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 const log = console.log;
 
 // Set your project, task and workspace gid here
-// These will be provided to you when the custom script gets executed.
+// These will be provided to you when the script gets executed.
 // We want to emulate that so we set those values here
 //
 // TODO: Set these values
@@ -129,7 +129,7 @@ token.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 const log = console.log;
 
 // Set your project, task and workspace gid here
-// These will be provided to you when the custom script gets executed.
+// These will be provided to you when the script gets executed.
 // We want to emulate that so we set those values here
 //
 // TODO: Set these values
@@ -188,19 +188,19 @@ run();
 
 ## Debugging/Errors/Logging
 
-If your custom script executes but doesn't yield the expected outcome, it might be due to encountering an error.
+If your script executes but doesn't yield the expected outcome, it might be due to encountering an error.
 When this happens you can employ try-catch blocks along with the `log` function to assist in diagnosing your issue.
-You can view your logs by going to your custom script rule > **"Run custom script"** > **"Run history"** .
+You can view your logs by going to your script actions rule > **"Run script"** > **"Run history"** .
 
 <details>
-<summary><b>Customize</b> > <b>Rules</b> > Select your custom script</summary>
+<summary><b>Customize</b> > <b>Rules</b> > Select your script action</summary>
 
-![custom script](images/debugging_errors/custom_script_rule.png)
+![script action](images/debugging_errors/script_actions_rule.png)
 </details>
 
 ![run history tab](images/debugging_errors/run_history_tab.png)
 
-Example custom script with error:
+Example script action script with error:
 ```javascript
 /**
  * What's in scope?
@@ -238,7 +238,7 @@ Example error shown in logs:
 
 ![error in script](images/debugging_errors/example_error_1.png)
 ![trigger script](images/debugging_errors/example_error_2.png)
-![go to custom script](images/debugging_errors/example_error_3.png)
+![go to script action](images/debugging_errors/example_error_3.png)
 ![view run history](images/debugging_errors/example_error_4.png)
 ![show error](images/debugging_errors/example_error_5.png)
 </details>
