@@ -7,6 +7,9 @@
 3. A new tab will open, displaying the Grant Permission page for the app. Click on **"Allow"**
 4. You should now be authenticated and are now ready to start creating automation rules with Script Actions
 
+
+https://github.com/user-attachments/assets/f3737e5e-0b84-4802-b88c-a813c3841c6d
+
 ## Usage: Default Script
 
 
