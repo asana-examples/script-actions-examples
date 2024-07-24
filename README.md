@@ -1,4 +1,4 @@
-# custom-scripts-examples
+# script-actions-examples
 
 ## Installation
 
