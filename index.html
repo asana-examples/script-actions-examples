@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlapping Background Colors</title>
+    <style>
+        .container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: #3498db; /* Bottom background color */
+            overflow: hidden;
+        }
+
+        .content {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%; /* Adjust the height to control the overlap */
+            background-color: rgba(255, 255, 255, 0.7); /* Top background color with transparency */
+            z-index: 1; /* Ensure it is above the container background */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content"></div>
+    </div>
+</body>
+</html>

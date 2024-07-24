@@ -161,26 +161,21 @@ Write your script below, then COPY and PASTE your script into the script editor
  * For more info, see https://github.com/Asana/node-asana
  */
 const run = async () => {
-    try {
-        // Generate a random number
-        const randomNum = Math.random();
+    // Generate a random number
+    const randomNum = Math.random();
 
-        // Get information about the triggered task
-        // NOTE: task_gid is provided as a number so we want to convert it to a string
-        const task = await tasksApiInstance.getTask(task_gid.toString(), {});
+    // Get information about the triggered task
+    const task = await tasksApiInstance.getTask(task_gid, {});
 
-        // Update the task name. Append random number to name of the triggered task
-        await tasksApiInstance.updateTask(
-            {
-                data: {
-                    name: `${task.data.name} - ${randomNum}`
-                }
-            },
-            task_gid
-        );
-    } catch (error) {
-        log(JSON.stringify(error));
-    }
+    // Update the task name. Append random number to name of the triggered task
+    await tasksApiInstance.updateTask(
+        {
+            data: {
+                name: `${task.data.name} - ${randomNum}`
+            }
+        },
+        task_gid
+    );
 };
 
 run();
@@ -199,12 +194,13 @@ When this happens you can use the `log` function to assist in diagnosing your is
 You can view your logs by going to your script actions rule's **"Run history"** tab.
 
 <details>
-<summary><b>Customize</b> > <b>Rules</b> > Select your script action</summary>
+<summary>More details</summary>
 
-![script action](images/debugging_errors/script_actions_rule.png)
+![logs 1](images/debugging_errors/logs_1.png)
+![logs 2](images/debugging_errors/logs_2.png)
+![logs 3](images/debugging_errors/logs_3.png)
+![logs 3](images/debugging_errors/logs_4.png)
 </details>
-
-![run history tab](images/debugging_errors/run_history_tab.png)
 
 Example script action script with error:
 ```javascript
@@ -233,7 +229,8 @@ run();
 
 Example error shown in logs:
 ```
-{"name":"PromiseRejected","message":"Request failed with status 404"}
+Encountered an error: {"name":"PromiseRejected","message":"Bad Request","stack":"    at run (eval.js:15)\n"}
+Finished in N/A ms.
 ```
 
 ## Example Scripts
