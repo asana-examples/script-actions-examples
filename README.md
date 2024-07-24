@@ -186,15 +186,17 @@ const run = async () => {
 run();
 ```
 
-![develop script locally 1](images/usage/develop_locally_1.png)
-![develop script locally 2](images/usage/develop_locally_2.png)
+
+https://github.com/user-attachments/assets/fe890fcb-4adc-42a1-ab5f-05e55dd497d0
 </details>
 
 ## Debugging/Errors/Logging
 
+https://github.com/user-attachments/assets/76e1c26a-ab6c-4dda-8d9d-5515ddf6b16c
+
 If your script executes but doesn't yield the expected outcome, it might be due to encountering an error.
-When this happens you can employ try-catch blocks along with the `log` function to assist in diagnosing your issue.
-You can view your logs by going to your script actions rule > **"Run script"** > **"Run history"** .
+When this happens you can use the `log` function to assist in diagnosing your issue.
+You can view your logs by going to your script actions rule's **"Run history"** tab.
 
 <details>
 <summary><b>Customize</b> > <b>Rules</b> > Select your script action</summary>
@@ -217,16 +219,12 @@ Example script action script with error:
  */
 
 const run = async () => {
-    try {
-        // Generate a random number
-        const randomNum = Math.random();
-
-        // Get information about the triggered task
-        // The error here is that we provided a gid that does not exist in our domain
-        const task = await tasksApiInstance.getTask("123", {});
-    } catch (error) {
-        log(JSON.stringify(error));
-    }
+   // Generate a random number
+   const randomNum = Math.random();
+   
+   // Get information about the triggered task
+   // The error here is that we provided a gid that does not exist in our domain
+   const task = await tasksApiInstance.getTask("123");
 };
 
 run();
@@ -237,15 +235,6 @@ Example error shown in logs:
 ```
 {"name":"PromiseRejected","message":"Request failed with status 404"}
 ```
-<details>
-<summary>more details</summary>
-
-![error in script](images/debugging_errors/example_error_1.png)
-![trigger script](images/debugging_errors/example_error_2.png)
-![go to script action](images/debugging_errors/example_error_3.png)
-![view run history](images/debugging_errors/example_error_4.png)
-![show error](images/debugging_errors/example_error_5.png)
-</details>
 
 ## Example Scripts
 
