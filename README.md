@@ -202,6 +202,9 @@ You can view your logs by going to your script actions rule's **"Run history"** 
 ![logs 3](images/debugging_errors/logs_4.png)
 </details>
 
+> [!NOTE]
+> Script action scripts are enclosed in their own `try...catch` statement. If your script also contains a `try...catch` statement, errors may not appear as errors but may instead be displayed as logs in the **"Run history"** tab.
+
 Example script action script with error:
 ```javascript
 /**
