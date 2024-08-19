@@ -93,7 +93,7 @@ Write your script below, then COPY and PASTE your script into the script editor
 
 /**
  * What's in scope?
- * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
+ * 1. (string) project_gid, workspace_gid, task_gid (only if triggered on a task)
  * 2. (function) log - this behaves like console.log and takes any number of parameters
  * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
  *    tasksApiInstance.getTask(...)
@@ -153,7 +153,7 @@ Write your script below, then COPY and PASTE your script into the script editor
 
 /**
  * What's in scope?
- * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
+ * 1. (string) project_gid, workspace_gid, task_gid (only if triggered on a task)
  * 2. (function) log - this behaves like console.log and takes any number of parameters
  * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
  *    tasksApiInstance.getTask(...)
@@ -210,7 +210,7 @@ Example script action script with error:
 ```javascript
 /**
  * What's in scope?
- * 1. (number) project_gid, workspace_gid, task_gid (only if triggered on a task)
+ * 1. (string) project_gid, workspace_gid, task_gid (only if triggered on a task)
  * 2. (function) log - this behaves like console.log and takes any number of parameters
  * 3. (object) *ApiInstance - for each group of APIs, an object containing functions to call the APIs; for example:
  *    tasksApiInstance.getTask(...)
